@@ -2,7 +2,11 @@ package org.calma.ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
@@ -24,7 +28,55 @@ public class HelloApplication extends Application {
         root.getChildren().add(canvas);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+        Scene scene = new Scene(root, 600, 400, Color.LIGHTBLUE);
+
+        // Create the prairie
+        Rectangle prairie = new Rectangle(600, 400);
+        prairie.setFill(Color.GREEN);
+
+        // Create the house
+        Rectangle house = new Rectangle(150, 100);
+        house.setFill(Color.BROWN);
+        house.setX(225); // Center the house horizontally
+        house.setY(150);
+
+        // Add elements to the scene
+        root.getChildren().addAll(prairie, house);
+
+        // Set the title and show the stage
+        primaryStage.setTitle("House in a Prairie");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        Rectangle fenetre = new Rectangle(20, 20);
+        fenetre.setFill(Color.LIGHTBLUE);
+        fenetre.setX(house.getX() + 20);
+        fenetre.setY(house.getY() + 20);
+        root.getChildren().add(fenetre);
+
+        LinearGradient gradient = new LinearGradient(0, 0, 0, 400, false, CycleMethod.NO_CYCLE,
+                new Stop(0, Color.LIGHTGREEN),
+                new Stop(1, Color.DARKGREEN));
+        prairie.setFill(gradient);
+
+        // ... (code existant)
+
+// Toit
+        Rectangle toit = new Rectangle(house.getWidth(), house.getHeight() / 2);
+        toit.setFill(Color.RED);
+        toit.setX(house.getX());
+        toit.setY(house.getY() - toit.getHeight());
+        root.getChildren().add(toit);
+
+// Fenêtre
+        Rectangle wi = new Rectangle(20, 20);
+        wi.setFill(Color.LIGHTBLUE);
+        wi.setX(house.getX() + 30);
+        wi.setY(house.getY() + 20);
+        root.getChildren().add(wi);
     }
+
 
     private void drawScene(GraphicsContext gc) {
         // Ciel
@@ -63,6 +115,7 @@ public class HelloApplication extends Application {
         // Nuages
         drawCloud(gc, 200, 100);
         drawCloud(gc, 500, 150);
+
     }
 
     private void drawCamel(GraphicsContext gc, double x, double y) {
