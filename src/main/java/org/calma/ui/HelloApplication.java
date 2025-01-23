@@ -29,7 +29,6 @@ public class HelloApplication extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
-        Scene scene = new Scene(root, 600, 400, Color.LIGHTBLUE);
 
         // Create the prairie
         Rectangle prairie = new Rectangle(600, 400);
@@ -46,7 +45,7 @@ public class HelloApplication extends Application {
 
         // Set the title and show the stage
         primaryStage.setTitle("House in a Prairie");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(canvas.getScene());
         primaryStage.show();
 
         Rectangle fenetre = new Rectangle(20, 20);
