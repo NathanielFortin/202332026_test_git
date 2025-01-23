@@ -1,13 +1,9 @@
 package org.calma.ui;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.shape.ArcType;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -54,6 +50,13 @@ public class HelloApplication extends Application {
 
         // Dromadaire
         drawCamel(gc, 600, 400);
+
+        // Soleil
+        drawSun(gc, 700, 100);
+
+        // Nuages
+        drawCloud(gc, 200, 100);
+        drawCloud(gc, 500, 150);
     }
 
     private void drawCamel(GraphicsContext gc, double x, double y) {
@@ -71,6 +74,18 @@ public class HelloApplication extends Application {
         // Bosses
         gc.fillArc(x + 10, y - 20, 30, 40, 0, 180, ArcType.ROUND);
         gc.fillArc(x + 40, y - 20, 30, 40, 0, 180, ArcType.ROUND);
+    }
+
+    private void drawSun(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.YELLOW);
+        gc.fillOval(x, y, 80, 80);
+    }
+
+    private void drawCloud(GraphicsContext gc, double x, double y) {
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillOval(x, y, 60, 40);
+        gc.fillOval(x + 20, y - 20, 60, 40);
+        gc.fillOval(x + 40, y, 60, 40);
     }
 
     public static void main(String[] args) {
