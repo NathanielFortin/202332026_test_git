@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Paysage du Québec avec Dromadaire");
+        primaryStage.setTitle("Paysage du Québec avec Dromadaire, Orignal et Poutine Volante");
 
         Group root = new Group();
         Canvas canvas = new Canvas(800, 600);
@@ -51,6 +51,12 @@ public class HelloApplication extends Application {
         // Dromadaire
         drawCamel(gc, 600, 400);
 
+        // Orignal
+        drawMoose(gc, 100, 400);
+
+        // Poutine Volante
+        drawFlyingPoutine(gc, 400, 100);
+
         // Soleil
         drawSun(gc, 700, 100);
 
@@ -76,6 +82,45 @@ public class HelloApplication extends Application {
         gc.fillArc(x + 40, y - 20, 30, 40, 0, 180, ArcType.ROUND);
     }
 
+    private void drawMoose(GraphicsContext gc, double x, double y) {
+        // Corps de l'orignal
+        gc.setFill(Color.BROWN);
+        gc.fillOval(x, y, 120, 60);
+
+        // Tête de l'orignal
+        gc.fillOval(x + 90, y - 30, 40, 40);
+
+        // Pattes de l'orignal
+        gc.fillRect(x + 20, y + 60, 10, 40);
+        gc.fillRect(x + 80, y + 60, 10, 40);
+
+        // Bois de l'orignal
+        gc.setFill(Color.SIENNA);
+        gc.fillPolygon(new double[]{x + 100, x + 90, x + 110}, new double[]{y - 50, y - 30, y - 30}, 3);
+        gc.fillPolygon(new double[]{x + 120, x + 110, x + 130}, new double[]{y - 50, y - 30, y - 30}, 3);
+    }
+
+    private void drawFlyingPoutine(GraphicsContext gc, double x, double y) {
+        // Base de la poutine (frites)
+        gc.setFill(Color.GOLDENROD);
+        gc.fillRect(x, y, 60, 20);
+
+        // Sauce
+        gc.setFill(Color.SADDLEBROWN);
+        gc.fillOval(x - 10, y, 80, 30);
+
+        // Fromage en grains
+        gc.setFill(Color.WHITE);
+        gc.fillOval(x + 10, y + 5, 10, 10);
+        gc.fillOval(x + 30, y + 10, 10, 10);
+        gc.fillOval(x + 50, y + 5, 10, 10);
+
+        // Ailes (pour voler)
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillOval(x - 20, y - 20, 30, 20);
+        gc.fillOval(x + 50, y - 20, 30, 20);
+    }
+
     private void drawSun(GraphicsContext gc, double x, double y) {
         gc.setFill(Color.YELLOW);
         gc.fillOval(x, y, 80, 80);
@@ -92,4 +137,3 @@ public class HelloApplication extends Application {
         launch(args);
     }
 }
-
