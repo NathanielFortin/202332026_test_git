@@ -26,7 +26,7 @@ public class HelloApplication extends Application {
         drawScene(gc, root);
 
         root.getChildren().add(canvas);
-        //me
+        //me true
         drawMaHouse(gc, root);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
