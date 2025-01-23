@@ -3,6 +3,7 @@ package org.calma.ui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.shape.ArcType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Paysage du Québec");
+        primaryStage.setTitle("Paysage du Québec avec Dromadaire");
 
         Group root = new Group();
         Canvas canvas = new Canvas(800, 600);
@@ -50,9 +51,30 @@ public class HelloApplication extends Application {
 
         gc.fillRect(550, 300, 20, 100);
         gc.fillPolygon(new double[]{540, 570, 600}, new double[]{300, 250, 300}, 3);
+
+        // Dromadaire
+        drawCamel(gc, 600, 400);
+    }
+
+    private void drawCamel(GraphicsContext gc, double x, double y) {
+        // Corps
+        gc.setFill(Color.SANDYBROWN);
+        gc.fillRect(x, y, 80, 40);
+
+        // Tête
+        gc.fillOval(x + 70, y - 20, 30, 30);
+
+        // Pattes
+        gc.fillRect(x + 10, y + 40, 10, 40);
+        gc.fillRect(x + 60, y + 40, 10, 40);
+
+        // Bosses
+        gc.fillArc(x + 10, y - 20, 30, 40, 0, 180, ArcType.ROUND);
+        gc.fillArc(x + 40, y - 20, 30, 40, 0, 180, ArcType.ROUND);
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 }
+
