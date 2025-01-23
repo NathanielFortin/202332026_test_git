@@ -30,9 +30,7 @@ public class HelloApplication extends Application {
         primaryStage.show();
 
 
-        // Create the prairie
-        Rectangle prairie = new Rectangle(600, 400);
-        prairie.setFill(Color.GREEN);
+
 
         // Create the house
         Rectangle house = new Rectangle(150, 100);
@@ -41,12 +39,7 @@ public class HelloApplication extends Application {
         house.setY(150);
 
         // Add elements to the scene
-        root.getChildren().addAll(prairie, house);
-
-        // Set the title and show the stage
-        primaryStage.setTitle("House in a Prairie");
-        primaryStage.setScene(canvas.getScene());
-        primaryStage.show();
+        root.getChildren().addAll(house);
 
         Rectangle fenetre = new Rectangle(20, 20);
         fenetre.setFill(Color.LIGHTBLUE);
@@ -57,7 +50,6 @@ public class HelloApplication extends Application {
         LinearGradient gradient = new LinearGradient(0, 0, 0, 400, false, CycleMethod.NO_CYCLE,
                 new Stop(0, Color.LIGHTGREEN),
                 new Stop(1, Color.DARKGREEN));
-        prairie.setFill(gradient);
 
         // ... (code existant)
 
