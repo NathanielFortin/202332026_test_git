@@ -23,53 +23,18 @@ public class HelloApplication extends Application {
         Canvas canvas = new Canvas(800, 600);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        drawScene(gc);
+        drawScene(gc, root);
 
         root.getChildren().add(canvas);
+        //me
+        drawMaHouse(gc, root);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
-
-
-
-        // Create the house
-        Rectangle house = new Rectangle(150, 100);
-        house.setFill(Color.BROWN);
-        house.setX(225); // Center the house horizontally
-        house.setY(150);
-
-        // Add elements to the scene
-        root.getChildren().addAll(house);
-
-        Rectangle fenetre = new Rectangle(20, 20);
-        fenetre.setFill(Color.LIGHTBLUE);
-        fenetre.setX(house.getX() + 20);
-        fenetre.setY(house.getY() + 20);
-        root.getChildren().add(fenetre);
-
-        LinearGradient gradient = new LinearGradient(0, 0, 0, 400, false, CycleMethod.NO_CYCLE,
-                new Stop(0, Color.LIGHTGREEN),
-                new Stop(1, Color.DARKGREEN));
-
-        // ... (code existant)
-
-// Toit
-        Rectangle toit = new Rectangle(house.getWidth(), house.getHeight() / 2);
-        toit.setFill(Color.RED);
-        toit.setX(house.getX());
-        toit.setY(house.getY() - toit.getHeight());
-        root.getChildren().add(toit);
-
-// Fenêtre
-        Rectangle wi = new Rectangle(20, 20);
-        wi.setFill(Color.LIGHTBLUE);
-        wi.setX(house.getX() + 30);
-        wi.setY(house.getY() + 20);
-        root.getChildren().add(wi);
     }
 
 
-    private void drawScene(GraphicsContext gc) {
+    private void drawScene(GraphicsContext gc, Group root) {
         // Ciel
         gc.setFill(Color.SKYBLUE);
         gc.fillRect(0, 0, 800, 600);
@@ -103,9 +68,48 @@ public class HelloApplication extends Application {
         // Soleil
         drawSun(gc, 700, 100);
 
+
         // Nuages
         drawCloud(gc, 200, 100);
         drawCloud(gc, 500, 150);
+
+    }
+
+    public void drawMaHouse(GraphicsContext gc, Group root) {
+        // Create the house
+        Rectangle house = new Rectangle(150, 100);
+        house.setFill(Color.BROWN);
+        house.setX(50); // Center the house horizontally
+        house.setY(200);
+
+        // Add elements to the scene
+        root.getChildren().addAll(house);
+
+        Rectangle fenetre = new Rectangle(20, 20);
+        fenetre.setFill(Color.LIGHTBLUE);
+        fenetre.setX(house.getX() + 20);
+        fenetre.setY(house.getY() + 20);
+        root.getChildren().add(fenetre);
+
+        LinearGradient gradient = new LinearGradient(0, 0, 0, 400, false, CycleMethod.NO_CYCLE,
+                new Stop(0, Color.LIGHTGREEN),
+                new Stop(1, Color.DARKGREEN));
+
+        // ... (code existant)
+
+// Toit
+        Rectangle toit = new Rectangle(house.getWidth(), house.getHeight() / 2);
+        toit.setFill(Color.RED);
+        toit.setX(house.getX());
+        toit.setY(house.getY() - toit.getHeight());
+        root.getChildren().add(toit);
+
+// Fenêtre
+        Rectangle wi = new Rectangle(20, 20);
+        wi.setFill(Color.LIGHTBLUE);
+        wi.setX(house.getX() + 30);
+        wi.setY(house.getY() + 20);
+        root.getChildren().add(wi);
 
     }
 
